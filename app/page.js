@@ -11,7 +11,7 @@ export default function Home() {
         <Link className="p-2 border-2 border-white rounded-xl" href="/about">
           About
         </Link>
-        <Link className="p-2 border-2 border-white rounded-xl" href="/play">
+        <Link className="p-2 border-2 border-white rounded-xl" href="/admin">
           Admin
         </Link>
       </div>
