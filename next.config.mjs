@@ -1,8 +1,18 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["apod.nasa.gov"], // Allows images from this domain
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "apod.nasa.gov",
+        pathname: "/**", // Allow all paths under this domain
+      },
+      {
+        protocol: "https",
+        hostname: "oaidalleapiprodscus.blob.core.windows.net",
+        pathname: "/**", // Allow all paths under this domain
+      },
+    ],
   },
 };
 
