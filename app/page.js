@@ -1,7 +1,11 @@
 import Link from "next/link";
-import UserName from "./UI/UserName";
+import AuthButton from "./UI/AuthButton";
+import { auth } from "../auth.js"; // Adjust the path as necessary
 
-export default function Home({ session }) {
+export default async function Home() {
+  const session = await auth();
+
+  const isAuthenticated = !!session?.user;
   console.log("Home session:", session);
 
   return (
@@ -33,16 +37,28 @@ export default function Home({ session }) {
         </Link>
       </div>
 
-      {/* Display User Name if logged in */}
-      {session?.user ? (
-        <div className="mt-6 text-xl">
-          <UserName session={session} />
-        </div>
-      ) : (
-        <p className="mt-6 text-lg text-gray-300">
-          Please sign in to see your profile information.
-        </p>
-      )}
+      {/* Greeting Message */}
+      <div className="mt-6 text-center">
+        {isAuthenticated ? (
+          <>
+            <p className="text-xl font-semibold text-teal-300">
+              Hello, {session.user.name}!
+            </p>
+            <div className="mt-4">
+              <AuthButton session={session} />
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="text-lg text-gray-300">
+              Please sign in to access your profile information.
+            </p>
+            <div className="mt-4">
+              <AuthButton session={session} />
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }

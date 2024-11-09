@@ -13,14 +13,17 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const session = await auth(); // Fetch session data at the root level
+  const session = await auth();
   console.log("Session Data in RootLayout:", session);
 
   return (
     <html lang="en">
       <body className="flex flex-col min-h-screen p-4 text-white bg-gradient-to-b from-indigo-950 via-blue-800 to-indigo-800">
         <Header session={session} />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow">
+          {/* Main content with children */}
+          <div session={session}>{children}</div>
+        </main>
         <Footer />
       </body>
     </html>
