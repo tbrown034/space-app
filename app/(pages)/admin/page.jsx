@@ -5,6 +5,7 @@ import DatePickerSection from "./components/DatePickerSection";
 import DisplayNewPair from "./components/DisplayNewPair";
 import LoadingSpinner from "@/app/UI/LoadingSpinner";
 import { formatDateForApi } from "@/app/utils/dateUtils";
+import UsersSection from "./components/UsersSection";
 
 const AdminPage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -56,6 +57,7 @@ const AdminPage = () => {
         setSelectedDate={setSelectedDate}
         handleGeneratePair={handleGeneratePair}
       />
+      <UsersSection />
 
       {error && <p className="text-red-500">{error}</p>}
 

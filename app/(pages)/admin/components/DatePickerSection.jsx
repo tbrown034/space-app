@@ -5,6 +5,12 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import {
+  CalendarIcon,
+  PaperAirplaneIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@heroicons/react/24/solid";
 import { calculateRandomDate, formatDateForUi } from "@/app/utils/dateUtils";
 
 const DatePickerSection = ({
@@ -31,48 +37,70 @@ const DatePickerSection = ({
     formatDateForUi(selectedDate) === formatDateForUi(new Date());
 
   return (
-    <div className="flex flex-col items-center mt-4 space-y-4">
-      <button
-        onClick={handleSetToday}
-        className="px-6 py-3 text-lg font-semibold text-white bg-teal-500 rounded-lg hover:bg-teal-600"
-      >
-        Today
-      </button>
-      <button
-        onClick={handleSetRandomDate}
-        className="px-6 py-3 text-lg font-semibold text-white bg-teal-500 rounded-lg hover:bg-teal-600"
-      >
-        Random
-      </button>
-      <DatePicker
-        selected={selectedDate}
-        onChange={(date) => setSelectedDate(date)}
-        dateFormat="MM/dd/yyyy"
-        className="px-4 py-2 text-black bg-white rounded-md center"
-      />
-      <div className="flex gap-2">
+    <div className="max-w-md p-6 bg-white rounded-lg shadow-lg">
+      {/* Section Title */}
+      <h3 className="mb-4 text-2xl font-semibold text-center text-gray-800">
+        Add Manually
+      </h3>
+
+      <div className="flex flex-col items-center space-y-4">
+        {/* Today and Random Buttons */}
         <button
-          onClick={handlePreviousDay}
-          className="px-4 py-2 text-lg font-semibold text-white bg-teal-500 rounded-lg hover:bg-teal-600"
+          onClick={handleSetToday}
+          className="w-full px-6 py-3 text-lg font-semibold text-white bg-teal-500 rounded-lg hover:bg-teal-600"
         >
-          Previous Day
+          Today
         </button>
+
         <button
-          onClick={handleNextDay}
-          disabled={isTodaySelected}
-          className={`px-4 py-2 text-lg font-semibold text-white rounded-lg ${
-            isTodaySelected ? "bg-gray-400" : "bg-teal-500 hover:bg-teal-600"
-          }`}
+          onClick={handleSetRandomDate}
+          className="w-full px-6 py-3 text-lg font-semibold text-white bg-teal-500 rounded-lg hover:bg-teal-600"
         >
-          Next Day
+          Random
+        </button>
+
+        {/* DatePicker with Calendar Icon */}
+        <div className="relative w-full max-w-xs">
+          <DatePicker
+            selected={selectedDate}
+            onChange={(date) => setSelectedDate(date)}
+            dateFormat="MM/dd/yyyy"
+            className="w-full px-4 py-2 pl-10 text-black bg-gray-300 rounded-md"
+            placeholderText="Select a date"
+          />
+          <CalendarIcon className="absolute w-5 h-5 text-gray-500 transform -translate-y-1/2 left-3 top-1/2" />
+        </div>
+
+        {/* Previous and Next Day Buttons */}
+        <div className="flex gap-2">
+          <button
+            onClick={handlePreviousDay}
+            className="flex items-center justify-center w-full px-4 py-2 text-lg font-semibold text-white bg-teal-500 rounded-lg hover:bg-teal-600"
+          >
+            <ChevronLeftIcon className="w-5 h-5 mr-1" />
+            Previous
+          </button>
+          <button
+            onClick={handleNextDay}
+            disabled={isTodaySelected}
+            className={`flex items-center justify-center w-full px-4 py-2 text-lg font-semibold text-white rounded-lg ${
+              isTodaySelected ? "bg-gray-400" : "bg-teal-500 hover:bg-teal-600"
+            }`}
+          >
+            Next
+            <ChevronRightIcon className="w-5 h-5 ml-1" />
+          </button>
+        </div>
+
+        {/* Generate Pair Button with Send Icon */}
+        <button
+          onClick={handleGeneratePair}
+          className="flex items-center justify-center w-full px-6 py-3 mt-3 text-lg font-semibold text-white bg-teal-500 rounded-lg hover:bg-teal-600"
+        >
+          <PaperAirplaneIcon className="w-5 h-5 mr-2 rotate-45" />
+          Generate Pair
         </button>
       </div>
-      <button
-        onClick={handleGeneratePair}
-        className="px-6 py-3 mt-3 text-lg font-semibold text-white bg-teal-500 rounded-lg hover:bg-teal-600"
-      >
-        Generate Pair
-      </button>
     </div>
   );
 };

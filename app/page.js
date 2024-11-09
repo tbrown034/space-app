@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SignIn from "./UI/signIn";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <Link className="p-2 border-2 border-white rounded-xl" href="/admin">
           Admin
         </Link>
+        <SignIn />
       </div>
     </div>
   );
