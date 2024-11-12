@@ -29,7 +29,7 @@ const Header = ({ session }) => {
       </div>
 
       {/* Auth Button and Welcome Message */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 mt-1">
         {isAuthenticated && (
           <span className="text-lg font-semibold text-teal-300">
             Hello, {session.user.name}!
