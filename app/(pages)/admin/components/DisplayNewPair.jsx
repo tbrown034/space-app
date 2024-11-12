@@ -85,8 +85,30 @@ const DisplayNewPair = ({ apodData, aiImageUrl, loading }) => {
 
       {/* Save Button */}
       <button
-        onClick={() => alert("Pair saved successfully!")}
-        className="w-full px-4 py-3 mt-8 text-white transition-colors duration-200 bg-teal-500 rounded-lg hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
+        onClick={async () => {
+          try {
+            const response = await fetch("/api/savePhotos", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                nasaImageUrl: apodData.url,
+                aiImageUrl: aiImageUrl,
+                metadata: {
+                  title: apodData.title,
+                  date: apodData.date,
+                  explanation: apodData.explanation,
+                },
+              }),
+            });
+
+            if (!response.ok) throw new Error("Failed to save image pair");
+            alert("Image pair saved successfully!");
+          } catch (error) {
+            console.error("Error saving image pair:", error);
+            alert("An error occurred while saving the image pair.");
+          }
+        }}
+        className="w-full px-4 py-3 mt-8 text-white bg-teal-500 rounded-lg hover:bg-teal-600"
       >
         Save
       </button>
