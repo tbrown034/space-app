@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import LoadingSpinner from "@/app/UI/LoadingSpinner";
 import Instructions from "./Instructions";
-import MetadataSection from "./MetadataSection";
+import MetaDataSection from "./MetaDataSection";
 import ImagePair from "./ImagePair";
 import ResultMessage from "./ResultMessage";
 
@@ -86,7 +86,7 @@ export default function RandomPlay() {
 
       {currentPair && (
         <>
-          <MetadataSection metadata={currentPair.metadata} />
+          <MetaDataSection metadata={currentPair.metadata} />
           <ImagePair
             isNasaFirst={currentPair.isNasaFirst}
             imageData={currentPair}

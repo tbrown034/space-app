@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function MetadataSection({ metadata }) {
+export default function MetaDataSection({ metadata }) {
   const [showMore, setShowMore] = useState(false);
 
   const toggleShowMore = () => setShowMore(!showMore);
