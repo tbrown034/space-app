@@ -49,7 +49,7 @@ const AdminPage = () => {
   const handleGeneratePair = () => fetchApodData(selectedDate);
 
   return (
-    <div className="flex flex-col items-center min-h-screen gap-6 p-6 ">
+    <div className="flex flex-col items-center min-h-screen gap-6 p-6">
       <h1 className="text-3xl font-bold text-teal-400">Admin Dashboard</h1>
 
       {/* Manual Add Section */}
@@ -58,11 +58,6 @@ const AdminPage = () => {
         setSelectedDate={setSelectedDate}
         handleGeneratePair={handleGeneratePair}
       />
-
-      {/* Users Section */}
-      <div className="w-full max-w-lg">
-        <UsersSection />
-      </div>
 
       {/* Error Message */}
       {error && <p className="text-red-500">{error}</p>}
@@ -74,8 +69,14 @@ const AdminPage = () => {
         loading={loading}
       />
 
-      {/* Image Pairs Section */}
-      <ImagePairsSection />
+      {/* View Data Section */}
+      <div className="flex flex-col items-center w-full max-w-lg gap-4 p-4 mt-8 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-semibold text-teal-300">View Data</h2>
+        <div className="flex w-full gap-4">
+          <UsersSection />
+          <ImagePairsSection />
+        </div>
+      </div>
     </div>
   );
 };
