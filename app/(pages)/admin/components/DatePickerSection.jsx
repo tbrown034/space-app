@@ -37,7 +37,7 @@ const DatePickerSection = ({
     formatDateForUi(selectedDate) === formatDateForUi(new Date());
 
   return (
-    <div className="max-w-md p-6 bg-white rounded-lg shadow-lg">
+    <div className="p-6 bg-white rounded-lg shadow-lg">
       {/* Section Title */}
       <h3 className="mb-4 text-2xl font-semibold text-center text-gray-800">
         Add Manually

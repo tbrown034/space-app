@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState } from "react";
+import { useState } from "react";
 
 const UsersSection = () => {
   const [users, setUsers] = useState([]);
@@ -11,7 +10,6 @@ const UsersSection = () => {
   const handleShowUsers = async () => {
     setLoading(true);
     setError(null);
-
     try {
       const response = await fetch("/api/getUsers");
       if (!response.ok) throw new Error("Failed to fetch users");
@@ -24,7 +22,6 @@ const UsersSection = () => {
       setLoading(false);
     }
   };
-
   return (
     <div className="max-w-md p-6 bg-white rounded-lg shadow-lg">
       <h3 className="mb-4 text-2xl font-semibold text-center text-gray-800">
@@ -37,11 +34,8 @@ const UsersSection = () => {
       >
         Show Users
       </button>
-
       {loading && <p className="mt-4 text-center text-gray-700">Loading...</p>}
-
       {error && <p className="mt-4 text-center text-red-500">{error}</p>}
-
       {showUsers && users.length > 0 && (
         <ul className="mt-4 space-y-2">
           {users.map((user) => (
@@ -54,12 +48,10 @@ const UsersSection = () => {
           ))}
         </ul>
       )}
-
       {showUsers && users.length === 0 && (
         <p className="mt-4 text-center text-gray-700">No users found.</p>
       )}
     </div>
   );
 };
-
 export default UsersSection;

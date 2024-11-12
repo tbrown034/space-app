@@ -15,10 +15,10 @@ const Header = ({ session }) => {
           Home
         </Link>
         <Link
-          href="/play"
+          href="/random"
           className="px-4 py-2 text-lg font-semibold transition-colors border-2 border-teal-400 rounded-xl hover:bg-teal-400 hover:text-black"
         >
-          Play
+          Random
         </Link>
         <Link
           href="/about"

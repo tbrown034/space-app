@@ -15,10 +15,10 @@ export default async function Home() {
       {/* Navigation Links */}
       <div className="flex gap-6">
         <Link
-          href="/play"
+          href="/random"
           className="px-6 py-3 text-lg font-semibold transition-colors border-2 border-teal-400 rounded-xl hover:bg-teal-400 hover:text-black"
         >
-          Play
+          Random
         </Link>
 
         <Link

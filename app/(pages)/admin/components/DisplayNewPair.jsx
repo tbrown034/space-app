@@ -1,7 +1,4 @@
-// app/(pages)/admin/components/DisplayNewPair.jsx
-
 "use client";
-
 import React, { useState } from "react";
 import Image from "next/image";
 import LoadingSpinner from "@/app/UI/LoadingSpinner";
